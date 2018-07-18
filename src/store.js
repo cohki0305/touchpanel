@@ -9,11 +9,11 @@ export default new Vuex.Store({
   },
   mutations: {
     restaurantStatus: (state, restaurants) => {
-      state.restaurants = restaurants
+      state.restaurants.push(...restaurants)
     }
   },
   actions: {
-    setRestaurant: ({commit}, restaurants) => {
+    addRestaurant: ({commit}, restaurants) => {
       commit('restaurantStatus', restaurants)
     }
   }

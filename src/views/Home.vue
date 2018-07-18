@@ -61,9 +61,12 @@ export default {
   created() {
     const db = firebase.firestore()
     const ref = db.collection('restaurant')
-    ref.onSnapshot((doc) => {
-      const restaurants = doc.docs.map((d) => d.data())
-      this.$store.dispatch('setRestaurant', restaurants)
+    ref.onSnapshot((snapshot) => {
+      const restaurants = snapshot.docChanges().map((change) => {
+        const doc = change.doc
+        return doc.data()
+      })
+      this.$store.dispatch('addRestaurant', restaurants)
     })
   },
   methods: {
