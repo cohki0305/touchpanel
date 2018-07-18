@@ -3,15 +3,15 @@
     <el-row>
       <el-button type="text" class="float" @click="dialogFormVisible = true">+</el-button>
     </el-row>
-    <el-dialog title="新規登録" :visible.sync="dialogFormVisible">
+    <el-dialog title="新規登録" :visible.sync="dialogFormVisible" width="80%">
       <el-form ref="form">
-        <el-form-item label="店名" label-width="120px" >
+        <el-form-item label="店名">
           <el-input v-model="form.name" auto-complete="off"></el-input>
         </el-form-item>
-        <el-form-item label="店舗名" label-width="120px">
+        <el-form-item label="店舗名">
           <el-input v-model="form.branch" auto-complete="off"></el-input>
         </el-form-item>
-        <el-form-item label="住所" label-width="120px">
+        <el-form-item label="住所">
           <el-input v-model="form.address" auto-complete="off"></el-input>
         </el-form-item>
       </el-form>
@@ -69,8 +69,7 @@ export default {
   methods: {
     ...mapActions(
       ['setRestaurant']
-    )
-    ,
+    ),
     async submit() {
       const db = firebase.firestore()
       try {
@@ -110,10 +109,6 @@ export default {
   clear: both
 }
 
-.box-card {
-  width: 480px;
-}
-
 .float{
 	position:fixed;
 	width:60px;
@@ -125,6 +120,10 @@ export default {
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
+}
+
+.el-dialog {
+  width: 80% !important;
 }
 
 </style>
